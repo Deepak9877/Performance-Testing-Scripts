@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <boolProp name="clearEachIteration">true</boolProp>
+        <boolProp name="useExpires">false</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+        <stringProp name="maximumValue">100000000</stringProp>
+        <stringProp name="minimumValue">1</stringProp>
+        <stringProp name="outputFormat">SessionID123</stringProp>
+        <boolProp name="perThread">false</boolProp>
+        <stringProp name="randomSeed"></stringProp>
+        <stringProp name="variableName">SessionID</stringProp>
+      </RandomVariableConfig>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Login API" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login API/dev/api/v1/session-1" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+    &quot;eventId&quot;: &quot;hgsK8-fFRguydSWadWAF6Q&quot;,&#xd;
+    &quot;eventTime&quot;: &quot;2023-03-29T07:52:28.000Z&quot;,&#xd;
+    &quot;eventType&quot;: &quot;com.okta.saml.tokens.transform&quot;,&#xd;
+    &quot;eventTypeVersion&quot;: &quot;1.0&quot;,&#xd;
+    &quot;contentType&quot;: &quot;application/json&quot;,&#xd;
+    &quot;cloudEventVersion&quot;: &quot;0.1&quot;,&#xd;
+    &quot;source&quot;: &quot;https://dev-idp.mysph.sph.com.sg/app/sph_devbhwebsite_2/exk1ldmn7fIUcqqTS1d7/sso/saml&quot;,&#xd;
+    &quot;data&quot;: {&#xd;
+        &quot;context&quot;: {&#xd;
+            &quot;request&quot;: {&#xd;
+                &quot;id&quot;: &quot;ZCPuO6om0XXDrzMfCnXhMgAAD5k&quot;,&#xd;
+                &quot;method&quot;: &quot;POST&quot;,&#xd;
+                &quot;url&quot;: {&#xd;
+                    &quot;value&quot;: &quot;https://dev-idp.mysph.sph.com.sg/app/sph_tmwebsite_5/exk1ldmn7fIUcqqTS1d7/sso/saml&quot;&#xd;
+                },&#xd;
+                &quot;ipAddress&quot;: &quot;202.27.30.3&quot;&#xd;
+            },&#xd;
+            &quot;protocol&quot;: {&#xd;
+                &quot;type&quot;: &quot;SAML2.0&quot;,&#xd;
+                &quot;issuer&quot;: {&#xd;
+                    &quot;id&quot;: &quot;0oa1ldmn7gnZNq1hl1d7&quot;,&#xd;
+                    &quot;name&quot;: &quot;Dev BH Website&quot;,&#xd;
+                    &quot;uri&quot;: &quot;https://dev-idp.mysph.sph.com.sg/Gyy6BdxG2&quot;&#xd;
+                },&#xd;
+                &quot;request&quot;: {&#xd;
+                    &quot;id&quot;: &quot;123dummyAuthnRequestId456&quot;,&#xd;
+                    &quot;version&quot;: &quot;2.0&quot;,&#xd;
+                    &quot;issuerInstant&quot;: &quot;2023-03-29T07:52:28.013Z&quot;,&#xd;
+                    &quot;destination&quot;: &quot;https://dev-idp.mysph.sph.com.sg/app/sph_devbhwebsite_2/exk1ldmn7fIUcqqTS1d7/sso/saml&quot;,&#xd;
+                    &quot;providerName&quot;: &quot;Dummy Provider Name&quot;,&#xd;
+                    &quot;forceAuthn&quot;: false,&#xd;
+                    &quot;passive&quot;: false,&#xd;
+                    &quot;issuer&quot;: &quot;https://dev.beritaharian.sg/Gyy6BdxG2/module.php/saml/sp/saml2-acs.php/0ZZRawejb&quot;,&#xd;
+                    &quot;assertionConsumerServiceURL&quot;: &quot;https://dev.beritaharian.sg/Gyy6BdxG2/module.php/saml/sp/saml2-acs.php/0ZZRawejb&quot;,&#xd;
+                    &quot;protocolBinding&quot;: &quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;,&#xd;
+                    &quot;nameIdPolicy&quot;: {&#xd;
+                        &quot;format&quot;: &quot;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&quot;,&#xd;
+                        &quot;allowCreate&quot;: true&#xd;
+                    },&#xd;
+                    &quot;requestedAuthnContext&quot;: {&#xd;
+                        &quot;comparison&quot;: &quot;exact&quot;,&#xd;
+                        &quot;authnContextClassRefs&quot;: [&#xd;
+                            &quot;urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport&quot;&#xd;
+                        ]&#xd;
+                    }&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;session&quot;: {&#xd;
+                &quot;id&quot;: &quot;${SessionID}&quot;,&#xd;
+                &quot;userId&quot;: &quot;00u1o7riwysBM9v3q1d7&quot;,&#xd;
+                &quot;login&quot;: &quot;vasanthmuthusamy389@gmail.com&quot;,&#xd;
+                &quot;createdAt&quot;: &quot;2023-03-29T07:52:28.034Z&quot;,&#xd;
+                &quot;expiresAt&quot;: &quot;2023-03-29T07:52:28.034Z&quot;,&#xd;
+                &quot;status&quot;: &quot;ACTIVE&quot;,&#xd;
+                &quot;lastPasswordVerification&quot;: &quot;2023-03-29T07:52:28.034Z&quot;,&#xd;
+                &quot;amr&quot;: [],&#xd;
+                &quot;idp&quot;: {},&#xd;
+                &quot;mfaActive&quot;: false&#xd;
+            },&#xd;
+            &quot;user&quot;: {&#xd;
+                &quot;id&quot;: &quot;00u1o7riwysBM9v3q1d7&quot;,&#xd;
+                &quot;passwordChanged&quot;: &quot;2022-05-09T02:32:56.000Z&quot;,&#xd;
+                &quot;profile&quot;: {&#xd;
+                    &quot;login&quot;: &quot;vasanthmuthusamy389@gmail.com&quot;,&#xd;
+                    &quot;firstName&quot;: &quot;Vasanth&quot;,&#xd;
+                    &quot;lastName&quot;: &quot;Okta Admin&quot;,&#xd;
+                    &quot;locale&quot;: &quot;en&quot;,&#xd;
+                    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;&#xd;
+                },&#xd;
+                &quot;_links&quot;: {&#xd;
+                    &quot;groups&quot;: {&#xd;
+                        &quot;href&quot;: &quot;https://dev-idp.mysph.sph.com.sg/api/v1/users/00u1o7riwysBM9v3q1d7/groups&quot;&#xd;
+                    },&#xd;
+                    &quot;factors&quot;: {&#xd;
+                        &quot;href&quot;: &quot;https://dev-idp.mysph.sph.com.sg/api/v1/users/00u1o7riwysBM9v3q1d7/factors&quot;&#xd;
+                    }&#xd;
+                }&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;assertion&quot;: {&#xd;
+            &quot;subject&quot;: {&#xd;
+                &quot;nameId&quot;: &quot;abi.okta.admin&quot;,&#xd;
+                &quot;nameFormat&quot;: &quot;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&quot;,&#xd;
+                &quot;confirmation&quot;: {&#xd;
+                    &quot;method&quot;: &quot;urn:oasis:names:tc:SAML:2.0:cm:bearer&quot;,&#xd;
+                    &quot;data&quot;: {&#xd;
+                        &quot;inResponseTo&quot;: &quot;123dummyAuthnRequestId456&quot;,&#xd;
+                        &quot;recipient&quot;: &quot;https://dev.beritaharian.sg/Gyy6BdxG2/module.php/saml/sp/saml2-acs.php/0ZZRawejb&quot;&#xd;
+                    }&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;authentication&quot;: {&#xd;
+                &quot;sessionIndex&quot;: &quot;id1680076348012.279177026&quot;,&#xd;
+                &quot;authnContext&quot;: {&#xd;
+                    &quot;authnContextClassRef&quot;: &quot;urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport&quot;&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;conditions&quot;: {&#xd;
+                &quot;audienceRestriction&quot;: [&#xd;
+                    &quot;0ZZRawejb&quot;&#xd;
+                ]&#xd;
+            },&#xd;
+            &quot;claims&quot;: {&#xd;
+                &quot;firstName&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;Abimaran&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;lastName&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;Okta Admin&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;login&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;abi.okta.admin&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;serviceFlags&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;uid&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;userStatus&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;visitorId&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;concurrencyAllowed&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;mySPHSessionId&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;lifetime&quot;: {&#xd;
+                &quot;expiration&quot;: 300&#xd;
+            }&#xd;
+        }&#xd;
+    }&#xd;
+}&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">9498rlpnwe.execute-api.ap-southeast-1.amazonaws.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/uat/api/v1/session</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Postman-Token" elementType="Header">
+                  <stringProp name="Header.name">Postman-Token</stringProp>
+                  <stringProp name="Header.value">fa93a2ae-3d46-4821-af09-1dd95a9aee01</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/plain</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">PostmanRuntime/7.28.3</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">*/*</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">3500</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
