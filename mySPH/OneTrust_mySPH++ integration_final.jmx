@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <boolProp name="clearEachIteration">false</boolProp>
+        <boolProp name="useExpires">true</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Register Through Email" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CriticalSectionController guiclass="CriticalSectionControllerGui" testclass="CriticalSectionController" testname="Email seq" enabled="true">
+          <stringProp name="CriticalSectionController.lockName">global_lock</stringProp>
+        </CriticalSectionController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="01_Registration through email" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Registration through email" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+  &quot;serviceFlag&quot;: &quot;reg_st&quot;,&#xd;
+  &quot;loginId&quot;: &quot;${EmailID}&quot;,&#xd;
+  &quot;password&quot;: &quot;2022@Pass123&quot;,&#xd;
+  &quot;confirmPassword&quot;: &quot;2022@Pass123&quot;,&#xd;
+  &quot;firstName&quot;: &quot;vasan&quot;,&#xd;
+  &quot;lastName&quot;: &quot;muthu&quot;,&#xd;
+  &quot;telephoneNumber&quot;: &quot;&quot;,&#xd;
+  &quot;telephoneCountryCode&quot;: &quot;&quot;,&#xd;
+  &quot;gotoUrl&quot;: &quot;https://dev.straitstimes.com&quot;,&#xd;
+  &quot;baseUrlType&quot;: &quot;p&quot;,&#xd;
+  &quot;termsAndConditionsAccepted&quot;: &quot;true&quot;,&#xd;
+  &quot;recaptchaResponse&quot;: &quot;03AIIukzgTAaGTc8_G5G62uPks6N8vYMlgrTX8SpQ7FyGz9-l5MI17o0YejUvwvYSNp-3KMR5CMMKUPNOYnivWf9WYr-LVxxHxM8rUYjhbym4_Ejj97refB2UPwvMT8jR-opVUIN9pya8W4XHKBSFE1J76VjbWZA1zg2HpcVpuyUf_gqlf1HO108_KEKzWNUSy3Dbni5hfMDafnnBGzFwgn_Q9Ngz7QEZCeMSQNGZSV-sMkoWUjQT5UYjJ-Zn9h6NRlm7CSUHNbJTdu2t2ADvCPJGvJHW4X_8XzEA9Z6Nf5cWvo2k1fE1Dha6xjJ5BDzs1F75j2kdpTqmxKT1oaO4mkhL3AMioHA8swyk9vj9HT5cnP46Er5QefbxrVvxXhImCJyaOhWaUBHNntkCFkDk9j6QT91mbGYjA8NGWQjRL9T6wsb-uoYBtMtGcTpP3Vcmp_JwC0gM8-VDswcAlQd3gVB_Trn7KRsCQSaYCetgBzgHJ5kefUuzNtdgPAvJWyfO5DDZLvB-3cfy-wRJOgIuIweBMcWmanvyheQ&quot;,&#xd;
+  &quot;userConsents&quot;: [&#xd;
+    {&#xd;
+      &quot;id&quot;: &quot;ae91b8b1-895a-449e-bb1e-38f60e6f40a1&quot;,&#xd;
+      &quot;consentGiven&quot;: true&#xd;
+    },&#xd;
+    {&#xd;
+        &quot;id&quot;: &quot;2cdc0ded-f6ce-48d8-ac42-acec8c15c8a7&quot;,&#xd;
+        &quot;consentGiven&quot;: true&#xd;
+    }&#xd;
+  ]&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">ds-account-api.sph.com.sg</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/uat/signup</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">var now     = new Date(); 
+var year    = now.getFullYear();
+var month   = now.getMonth()+1;
+var day     = now.getDate();
+var hour    = now.getHours();
+var minute  = now.getMinutes();
+var second  = now.getSeconds();
+var EmailID;
+var timenow = &quot;&quot; + year + month + day + hour + minute + second + &quot;&quot;;
+var id = &quot;mysph.vasanth&quot; + timenow  + &quot;@mailinator.com&quot;;
+log.info(id);
+log.info(timenow);
+//context.variableManager.setValue(&quot;timenow&quot;, timenow);
+//context.variableManager.setValue(&quot;loginId&quot;, id);
+vars.put(&quot;EmailID&quot;,id);
+log.info(EmailID);</stringProp>
+                <stringProp name="scriptLanguage">javascript</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
+            </hashTree>
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+              <intProp name="ActionProcessor.action">1</intProp>
+              <intProp name="ActionProcessor.target">0</intProp>
+              <stringProp name="ActionProcessor.duration">6000</stringProp>
+            </TestAction>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
+                <stringProp name="RandomTimer.range">100</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="02_ActivationKey" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ActivationKey" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">ds-account-api.sph.com.sg</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/uat/test/v1/verifyemail/key?loginId=${EmailID}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Actkey" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">vars.put(&quot;actk&quot;,prev.getResponseDataAsString());
+</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+              <intProp name="ActionProcessor.action">1</intProp>
+              <intProp name="ActionProcessor.target">0</intProp>
+              <stringProp name="ActionProcessor.duration">6000</stringProp>
+            </TestAction>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
+                <stringProp name="RandomTimer.range">100</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="03_Email verification" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Email verification" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">ds-account-api.sph.com.sg</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/uat/users/verifyemail?svcFlag=reg_st&amp;activationKey=${actk}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-202516509">Success</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+                <stringProp name="JSON_PATH">$.result</stringProp>
+                <stringProp name="EXPECTED_VALUE">Success</stringProp>
+                <boolProp name="JSONVALIDATION">true</boolProp>
+                <boolProp name="EXPECT_NULL">false</boolProp>
+                <boolProp name="INVERT">false</boolProp>
+                <boolProp name="ISREGEX">true</boolProp>
+              </JSONPathAssertion>
+              <hashTree/>
+            </hashTree>
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+              <intProp name="ActionProcessor.action">1</intProp>
+              <intProp name="ActionProcessor.target">0</intProp>
+              <stringProp name="ActionProcessor.duration">6000</stringProp>
+            </TestAction>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
+                <stringProp name="RandomTimer.range">100</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Register Through API" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CriticalSectionController guiclass="CriticalSectionControllerGui" testclass="CriticalSectionController" testname="API seq" enabled="true">
+          <stringProp name="CriticalSectionController.lockName">global_lock</stringProp>
+        </CriticalSectionController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="01_Token" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Token" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="grant_type" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">password</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">grant_type</stringProp>
+                  </elementProp>
+                  <elementProp name="username" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">vasanthmuthusamy389%40gmail.com</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">username</stringProp>
+                  </elementProp>
+                  <elementProp name="password" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">testing%4021</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">password</stringProp>
+                  </elementProp>
+                  <elementProp name="scope" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">admin</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">scope</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">uat-idp.mysph.sph.com.sg</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/oauth2/ausy3y1gx37FjAfbn1d6/v1/token</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">https://uat-idp.mysph.sph.com.sg/oauth2/ausy3y1gx37FjAfbn1d6/v1/token</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">PostmanRuntime/7.28.3</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                  <elementProp name="Postman-Token" elementType="Header">
+                    <stringProp name="Header.name">Postman-Token</stringProp>
+                    <stringProp name="Header.value">a998e89a-65bf-4aaa-b1e0-77c2681e82e0</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+                <collectionProp name="AuthManager.auth_list">
+                  <elementProp name="" elementType="Authorization">
+                    <stringProp name="Authorization.url">https://uat-idp.mysph.sph.com.sg/oauth2/ausy3y1gx37FjAfbn1d6/v1/token</stringProp>
+                    <stringProp name="Authorization.username">0oa1ebs4nfb9kbaNs1d7</stringProp>
+                    <stringProp name="Authorization.password">xIwTytSrUChU5aB_KXZuRlrQvJibF9zSQZRM3kR8</stringProp>
+                    <stringProp name="Authorization.domain"></stringProp>
+                    <stringProp name="Authorization.realm"></stringProp>
+                  </elementProp>
+                </collectionProp>
+                <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+              </AuthManager>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Bearer_Token" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">Bearer_Token</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">access_token</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">not found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="false">
+              <intProp name="ActionProcessor.action">1</intProp>
+              <intProp name="ActionProcessor.target">0</intProp>
+              <stringProp name="ActionProcessor.duration">5000</stringProp>
+            </TestAction>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
+                <stringProp name="RandomTimer.range">100</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="02_Registration through API" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Registration through API" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+    &quot;email&quot;: &quot;${EmailID}&quot;,&#xd;
+    &quot;firstName&quot;: &quot;Ramu&quot;,&#xd;
+    &quot;lastName&quot;: &quot;Admin createUser API&quot;,&#xd;
+    &quot;loginId&quot;: &quot;${EmailID}&quot;,&#xd;
+    &quot;password&quot;: &quot;ldap123!&quot;,&#xd;
+    &quot;serviceFlags&quot;: [&quot;reg_st&quot;],&#xd;
+    &quot;telephoneNumberCountryCode&quot;: &quot;65&quot;,&#xd;
+    &quot;telephoneNumber&quot;: &quot;123456789&quot;,&#xd;
+    &quot;tncAccepted&quot;: true,&#xd;
+    &quot;userType&quot;: &quot;ind&quot;,&#xd;
+    &quot;baseURL&quot;: &quot;https://awsqa.straitstimes.com/&quot;,&#xd;
+    &quot;baseURLType&quot;: &quot;xxx&quot;,&#xd;
+    &quot;extendedProperties&quot;: {&#xd;
+        &quot;country&quot;: &quot;SG&quot;,&#xd;
+        &quot;signupMethod&quot;: &quot;&quot;,&#xd;
+        &quot;campaignCode&quot;: &quot;testing_x&quot;&#xd;
+    }&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">ds-account-api.sph.com.sg</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/uat/api/admin/v3/users</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">Bearer ${Bearer_Token}</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <BoundaryExtractor guiclass="BoundaryExtractorGui" testclass="BoundaryExtractor" testname="UID" enabled="true">
+                <stringProp name="BoundaryExtractor.useHeaders">false</stringProp>
+                <stringProp name="BoundaryExtractor.refname">UID</stringProp>
+                <stringProp name="BoundaryExtractor.lboundary">&quot;uid&quot;:&quot;</stringProp>
+                <stringProp name="BoundaryExtractor.rboundary">&quot;}}</stringProp>
+                <stringProp name="BoundaryExtractor.default">Not Found</stringProp>
+                <boolProp name="BoundaryExtractor.default_empty_value">false</boolProp>
+                <stringProp name="BoundaryExtractor.match_number">0</stringProp>
+              </BoundaryExtractor>
+              <hashTree/>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">var now     = new Date(); 
+var year    = now.getFullYear();
+var month   = now.getMonth()+1;
+var day     = now.getDate();
+var hour    = now.getHours();
+var minute  = now.getMinutes();
+var second  = now.getSeconds();
+var EmailID;
+var timenow = &quot;&quot; + year + month + day + hour + minute + second + &quot;&quot;;
+var id = &quot;mysph.api.vasanth&quot; + timenow  + &quot;@mailinator.com&quot;;
+log.info(id);
+log.info(timenow);
+//context.variableManager.setValue(&quot;timenow&quot;, timenow);
+//context.variableManager.setValue(&quot;loginId&quot;, id);
+vars.put(&quot;EmailID&quot;,id);
+log.info(EmailID);</stringProp>
+                <stringProp name="scriptLanguage">javascript</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
+            </hashTree>
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+              <intProp name="ActionProcessor.action">1</intProp>
+              <intProp name="ActionProcessor.target">0</intProp>
+              <stringProp name="ActionProcessor.duration">0</stringProp>
+            </TestAction>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+                <stringProp name="ConstantTimer.delay">5000</stringProp>
+                <stringProp name="RandomTimer.range">5000</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="03_Update Account through API" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Account through API" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+  &quot;firstName&quot;: &quot;Ramu&quot;,&#xd;
+  &quot;lastName&quot;: &quot;Admin createUser API&quot;,&#xd;
+  &quot;telephoneNumber&quot;: &quot;123456&quot;,&#xd;
+  &quot;telephoneNumberCountryCode&quot;: &quot;65&quot;,&#xd;
+  &quot;uid&quot;: &quot;${UID}&quot;,&#xd;
+  &quot;userType&quot;: &quot;ind&quot;&#xd;
+}&#xd;
+</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">ds-account-api.sph.com.sg</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/uat/api/admin/v3/users</stringProp>
+              <stringProp name="HTTPSampler.method">PUT</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Authorization" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">Bearer ${Bearer_Token}</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="false">
+              <intProp name="ActionProcessor.action">1</intProp>
+              <intProp name="ActionProcessor.target">0</intProp>
+              <stringProp name="ActionProcessor.duration">5000</stringProp>
+            </TestAction>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
+                <stringProp name="RandomTimer.range">100</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Login API" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CriticalSectionController guiclass="CriticalSectionControllerGui" testclass="CriticalSectionController" testname="Login seq" enabled="true">
+          <stringProp name="CriticalSectionController.lockName">global_lock</stringProp>
+        </CriticalSectionController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="01_Login" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+    &quot;eventId&quot;: &quot;We76uMBcTyers_gmaiv10Q&quot;,&#xd;
+    &quot;eventTime&quot;: &quot;2022-12-13T07:57:04.000Z&quot;,&#xd;
+    &quot;eventType&quot;: &quot;com.okta.saml.tokens.transform&quot;,&#xd;
+    &quot;eventTypeVersion&quot;: &quot;1.0&quot;,&#xd;
+    &quot;contentType&quot;: &quot;application/json&quot;,&#xd;
+    &quot;cloudEventVersion&quot;: &quot;0.1&quot;,&#xd;
+    &quot;source&quot;: &quot;https://uat-idp.mysph.sph.com.sg/app/uat-sph_uatstwebsite_1/exk13rk040MXqk1bV1d7/sso/saml&quot;,&#xd;
+    &quot;data&quot;: {&#xd;
+        &quot;context&quot;: {&#xd;
+            &quot;request&quot;: {&#xd;
+                &quot;id&quot;: &quot;Y5gwUCXy6UEAbgXQwELKMAAAB1Q&quot;,&#xd;
+                &quot;method&quot;: &quot;POST&quot;,&#xd;
+                &quot;url&quot;: {&#xd;
+                    &quot;value&quot;: &quot;https://uat-idp.mysph.sph.com.sg/app/uat-sph_uatstwebsite_1/exk13rk040MXqk1bV1d7/sso/saml&quot;&#xd;
+                },&#xd;
+                &quot;ipAddress&quot;: &quot;202.27.26.162&quot;&#xd;
+            },&#xd;
+            &quot;protocol&quot;: {&#xd;
+                &quot;type&quot;: &quot;SAML2.0&quot;,&#xd;
+                &quot;issuer&quot;: {&#xd;
+                    &quot;id&quot;: &quot;0oa13rk041pZq5ZCe1d7&quot;,&#xd;
+                    &quot;name&quot;: &quot;UAT ST Website&quot;,&#xd;
+                    &quot;uri&quot;: &quot;https://uat-idp.mysph.sph.com.sg/OvARlMogL&quot;&#xd;
+                },&#xd;
+                &quot;request&quot;: {&#xd;
+                    &quot;id&quot;: &quot;123dummyAuthnRequestId456&quot;,&#xd;
+                    &quot;version&quot;: &quot;2.0&quot;,&#xd;
+                    &quot;issuerInstant&quot;: &quot;2022-12-13T07:57:04.885Z&quot;,&#xd;
+                    &quot;destination&quot;: &quot;https://uat-idp.mysph.sph.com.sg/app/uat-sph_uatstwebsite_1/exk13rk040MXqk1bV1d7/sso/saml&quot;,&#xd;
+                    &quot;providerName&quot;: &quot;Dummy Provider Name&quot;,&#xd;
+                    &quot;forceAuthn&quot;: false,&#xd;
+                    &quot;passive&quot;: false,&#xd;
+                    &quot;issuer&quot;: &quot;https://uat.straitstimes.com/OvARlMogL/module.php/saml/sp/saml2-acs.php/eQzLpMGEM&quot;,&#xd;
+                    &quot;assertionConsumerServiceURL&quot;: &quot;https://uat.straitstimes.com/OvARlMogL/module.php/saml/sp/saml2-acs.php/eQzLpMGEM&quot;,&#xd;
+                    &quot;protocolBinding&quot;: &quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;,&#xd;
+                    &quot;nameIdPolicy&quot;: {&#xd;
+                        &quot;format&quot;: &quot;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&quot;,&#xd;
+                        &quot;allowCreate&quot;: true&#xd;
+                    },&#xd;
+                    &quot;requestedAuthnContext&quot;: {&#xd;
+                        &quot;comparison&quot;: &quot;exact&quot;,&#xd;
+                        &quot;authnContextClassRefs&quot;: [&#xd;
+                            &quot;urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport&quot;&#xd;
+                        ]&#xd;
+                    }&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;session&quot;: {&#xd;
+                &quot;id&quot;: &quot;123dummySessionId456&quot;,&#xd;
+                &quot;userId&quot;: &quot;00up51skiVB9gZO7z1d6&quot;,&#xd;
+                &quot;login&quot;: &quot;abimaran@sph.com.sg&quot;,&#xd;
+                &quot;createdAt&quot;: &quot;2022-12-13T07:57:04.916Z&quot;,&#xd;
+                &quot;expiresAt&quot;: &quot;2022-12-13T07:57:04.916Z&quot;,&#xd;
+                &quot;status&quot;: &quot;ACTIVE&quot;,&#xd;
+                &quot;lastPasswordVerification&quot;: &quot;2022-12-13T07:57:04.916Z&quot;,&#xd;
+                &quot;amr&quot;: [],&#xd;
+                &quot;idp&quot;: {},&#xd;
+                &quot;mfaActive&quot;: false&#xd;
+            },&#xd;
+            &quot;user&quot;: {&#xd;
+                &quot;id&quot;: &quot;00up51skiVB9gZO7z1d6&quot;,&#xd;
+                &quot;passwordChanged&quot;: &quot;2021-06-28T02:09:38.000Z&quot;,&#xd;
+                &quot;profile&quot;: {&#xd;
+                    &quot;login&quot;: &quot;abimaran@sph.com.sg&quot;,&#xd;
+                    &quot;firstName&quot;: &quot;Abimaran&quot;,&#xd;
+                    &quot;lastName&quot;: &quot;Kugathasan&quot;,&#xd;
+                    &quot;locale&quot;: &quot;en&quot;,&#xd;
+                    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;&#xd;
+                },&#xd;
+                &quot;_links&quot;: {&#xd;
+                    &quot;groups&quot;: {&#xd;
+                        &quot;href&quot;: &quot;https://uat-idp.mysph.sph.com.sg/api/v1/users/00up51skiVB9gZO7z1d6/groups&quot;&#xd;
+                    },&#xd;
+                    &quot;factors&quot;: {&#xd;
+                        &quot;href&quot;: &quot;https://uat-idp.mysph.sph.com.sg/api/v1/users/00up51skiVB9gZO7z1d6/factors&quot;&#xd;
+                    }&#xd;
+                }&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;assertion&quot;: {&#xd;
+            &quot;subject&quot;: {&#xd;
+                &quot;nameId&quot;: &quot;abimaran@sph.com.sg&quot;,&#xd;
+                &quot;nameFormat&quot;: &quot;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&quot;,&#xd;
+                &quot;confirmation&quot;: {&#xd;
+                    &quot;method&quot;: &quot;urn:oasis:names:tc:SAML:2.0:cm:bearer&quot;,&#xd;
+                    &quot;data&quot;: {&#xd;
+                        &quot;inResponseTo&quot;: &quot;123dummyAuthnRequestId456&quot;,&#xd;
+                        &quot;recipient&quot;: &quot;https://uat.straitstimes.com/OvARlMogL/module.php/saml/sp/saml2-acs.php/eQzLpMGEM&quot;&#xd;
+                    }&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;authentication&quot;: {&#xd;
+                &quot;sessionIndex&quot;: &quot;id1670918224882.1339665994&quot;,&#xd;
+                &quot;authnContext&quot;: {&#xd;
+                    &quot;authnContextClassRef&quot;: &quot;urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport&quot;&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;conditions&quot;: {&#xd;
+                &quot;audienceRestriction&quot;: [&#xd;
+                    &quot;eQzLpMGEM&quot;&#xd;
+                ]&#xd;
+            },&#xd;
+            &quot;claims&quot;: {&#xd;
+                &quot;firstName&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;Abimaran&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;lastName&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;Kugathasan&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;login&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;abimaran@sph.com.sg&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;mySPHSessionId&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;concurrencyAllowed&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;visitorId&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;6xXqjOas0/NN6Yd7OAB6M8V0f2XLManwb2D0xBrjCU8=&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;userStatus&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;verified&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;serviceFlags&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;reg_tm&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;bts&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;zbs&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;bh_online&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;email&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;abimaran@sph.com.sg&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;marketingConsent&quot;: {&#xd;
+                    &quot;attributes&quot;: {&#xd;
+                        &quot;NameFormat&quot;: &quot;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&quot;&#xd;
+                    },&#xd;
+                    &quot;attributeValues&quot;: [&#xd;
+                        {&#xd;
+                            &quot;attributes&quot;: {&#xd;
+                                &quot;xsi:type&quot;: &quot;xs:string&quot;&#xd;
+                            },&#xd;
+                            &quot;value&quot;: &quot;&quot;&#xd;
+                        }&#xd;
+                    ]&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;lifetime&quot;: {&#xd;
+                &quot;expiration&quot;: 300&#xd;
+            }&#xd;
+        }&#xd;
+    }&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">uat-session.mysph.sph.com.sg</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/api/v1/session</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Authorization" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">Bearer ${Bearer_Token}</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
